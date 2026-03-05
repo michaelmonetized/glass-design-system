@@ -26,10 +26,7 @@ export default function HomePage() {
             loop
             poster="/bg/video-production.png"
           >
-            <source
-              src="https://www.hustlelaunch.com/wp-content/uploads/2024/07/attraction-silent-backdrop.webm"
-              type="video/webm"
-            />
+            <source src="/bg/hero-video.webm" type="video/webm" />
           </video>
           <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
         </div>
