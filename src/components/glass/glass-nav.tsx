@@ -63,13 +63,14 @@ export function GlassNav({ items = defaultItems, className }: GlassNavProps) {
     <header
       className={cn(
         "sticky top-0 z-50 w-full",
-        "glass-morphism border-b border-border/40",
+        "border-b border-white/10",
+        "backdrop-blur-xl bg-black/20 dark:bg-black/30",
         className
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg text-foreground">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary font-mono text-sm">G</span>
+        <Link href="/" className="flex items-center gap-2 font-bold text-lg text-white drop-shadow-md">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/15 text-white font-mono text-sm">G</span>
           Glass
         </Link>
 
@@ -77,7 +78,7 @@ export function GlassNav({ items = defaultItems, className }: GlassNavProps) {
         <nav ref={navRef} className="relative hidden items-center gap-1 md:flex">
           {indicator.width > 0 && (
             <motion.div
-              className="absolute top-1/2 h-9 rounded-lg bg-ctp-surface0 dark:bg-ctp-surface1"
+              className="absolute top-1/2 h-9 rounded-lg bg-white/15"
               initial={false}
               animate={{
                 left: indicator.left,
@@ -98,10 +99,10 @@ export function GlassNav({ items = defaultItems, className }: GlassNavProps) {
               href={item.href}
               ref={setRef(item.href)}
               className={cn(
-                "relative z-10 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                "relative z-10 rounded-lg px-4 py-2 text-sm font-medium transition-colors drop-shadow-md",
                 pathname === item.href
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-white"
+                  : "text-white/70 hover:text-white"
               )}
             >
               {item.label}
