@@ -132,12 +132,10 @@ export default function HomePage() {
           SECTION 2: Cinematic Theater — refraction over dramatic lighting
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="/bg/video-production.png"
-            alt="Cinematic theater with dramatic lighting"
-            className="h-full w-full object-cover"
-          />
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/video-production.png')" }}
+        >
           <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
         </div>
 
@@ -221,12 +219,10 @@ export default function HomePage() {
           SECTION 3: Goal Targets — Maximum refraction (bokeh + color)
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="/bg/goal-first.webp"
-            alt="Target pins on teal surface"
-            className="h-full w-full object-cover"
-          />
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/goal-first.webp')" }}
+        >
           <div className="absolute inset-0 bg-black/10 dark:bg-black/30" />
         </div>
 
@@ -312,12 +308,10 @@ export default function HomePage() {
           SECTION 4: Analytics Dashboard — Animated borders + buttons
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="/bg/campaign-monitoring.webp"
-            alt="Analytics dashboard with world map"
-            className="h-full w-full object-cover"
-          />
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/campaign-monitoring.webp')" }}
+        >
           <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
         </div>
 
@@ -386,12 +380,10 @@ export default function HomePage() {
           SECTION 5: Creative Studio — Glass cards over portrait
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="/bg/direct-approach.png"
-            alt="Creative studio workspace"
-            className="h-full w-full object-cover"
-          />
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/direct-approach.png')" }}
+        >
           <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
         </div>
 
