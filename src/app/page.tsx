@@ -14,39 +14,57 @@ export default function HomePage() {
   return (
     <main className="relative">
       {/* ═══════════════════════════════════════════════════════════════
-          HERO: Heading + value prop, YouTube left, contact form right
+          HERO: Heading + value prop left, glass contact form right
+          Video embed below the fold
           ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative overflow-hidden">
         {/* Background */}
         <div
           className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
           style={{ backgroundImage: "url('/bg/video-production.png')" }}
         >
-          <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 py-20">
-          {/* Heading + value prop — centered */}
-          <div className="mb-10 text-center">
-            <h1 className="text-4xl font-black tracking-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl">
-              Build Beautiful{" "}
-              <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
-                Glass Interfaces
-              </span>
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-white/70 drop-shadow-sm md:text-lg">
-              A native-ish design system for the web. Apple Liquid Glass
-              refraction, animated borders, and Catppuccin colors — all built on
-              Next.js, Tailwind, and shadcn.
-            </p>
-          </div>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-28 md:pt-36 lg:pb-28">
+          {/* Two-column hero: copy left, form right */}
+          <div className="grid gap-12 lg:grid-cols-[1fr,420px] lg:items-center">
+            {/* Left: headline + value prop + video */}
+            <div className="flex flex-col gap-8">
+              <div>
+                <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+                  Build Beautiful
+                  <br />
+                  <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
+                    Glass Interfaces
+                  </span>
+                </h1>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">
+                  A native-ish design system for the web — Apple Liquid Glass
+                  refraction, animated conic-gradient borders, and Catppuccin
+                  colors. Built on Next.js 16, Tailwind v4, and shadcn.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <GlassButton
+                    variant="cta"
+                    size="lg"
+                    onClick={() => (window.location.href = "/components")}
+                  >
+                    Explore Components
+                  </GlassButton>
+                  <GlassButton
+                    variant="default"
+                    size="lg"
+                    onClick={() => setDialogOpen(true)}
+                  >
+                    Learn More
+                  </GlassButton>
+                </div>
+              </div>
 
-          {/* Two-column: YouTube left, Contact form right */}
-          <div className="grid w-full items-stretch gap-6 lg:grid-cols-2">
-            {/* YouTube embed */}
-            <div className="flex flex-col">
-              <div className="flex-1 overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
-                <div className="relative h-full min-h-[300px] w-full">
+              {/* YouTube — proper 16:9 aspect ratio */}
+              <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+                <div className="relative w-full pb-[56.25%]">
                   <iframe
                     className="absolute inset-0 h-full w-full"
                     src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
@@ -58,29 +76,40 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Glass contact form card */}
-            <AnimatedBorder
-              borderRadius="1.5rem"
-              glowSpread="3rem"
-              glowBlur="2rem"
-              showGlow
-              animate
-            >
-              <div className="glass-morphism rounded-3xl p-6">
-                <h2 className="mb-1 text-lg font-bold text-white drop-shadow-md">
-                  Get Started Today
-                </h2>
-                <p className="mb-5 text-sm text-white/60 drop-shadow-sm">
-                  Tell us about your project and we&apos;ll build something amazing.
-                </p>
-                <GlassContactForm />
-                <div className="mt-4">
-                  <GlassButton variant="cta" size="lg" className="w-full">
-                    Send Message →
-                  </GlassButton>
-                </div>
-              </div>
-            </AnimatedBorder>
+            {/* Right: glass contact form */}
+            <div className="lg:sticky lg:top-24">
+              <AnimatedBorder
+                borderRadius="1.5rem"
+                glowSpread="3rem"
+                glowBlur="2rem"
+                showGlow
+                animate
+              >
+                <GlassPanel
+                  width={420}
+                  height={600}
+                  radius={24}
+                  depth={8}
+                  blur={2}
+                  chromaticAberration={4}
+                  className="!h-auto !w-full p-6"
+                >
+                  <h2 className="mb-1 text-lg font-bold text-white drop-shadow-md">
+                    Get Started Today
+                  </h2>
+                  <p className="mb-5 text-sm text-white/50">
+                    Tell us about your project and we&apos;ll build something
+                    amazing.
+                  </p>
+                  <GlassContactForm />
+                  <div className="mt-5">
+                    <GlassButton variant="cta" size="lg" className="w-full">
+                      Send Message →
+                    </GlassButton>
+                  </div>
+                </GlassPanel>
+              </AnimatedBorder>
+            </div>
           </div>
         </div>
       </section>
