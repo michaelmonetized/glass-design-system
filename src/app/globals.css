@@ -246,26 +246,26 @@
   background:
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--background) 40%, transparent)
+      color-mix(in srgb, var(--background) 12%, transparent)
     ),
     linear-gradient(
       135deg,
       transparent 0%,
-      color-mix(in srgb, var(--background) 80%, transparent) 50%,
-      var(--background) 60%,
+      color-mix(in srgb, var(--background) 15%, transparent) 50%,
+      color-mix(in srgb, var(--background) 20%, transparent) 60%,
       transparent 70%,
-      var(--background) 80%,
+      color-mix(in srgb, var(--background) 15%, transparent) 80%,
       transparent 100%
     ),
     linear-gradient(
       0deg,
-      var(--background) 0%,
-      color-mix(in srgb, var(--background) 20%, transparent) 100%
+      color-mix(in srgb, var(--background) 18%, transparent) 0%,
+      color-mix(in srgb, var(--background) 8%, transparent) 100%
     );
-  backdrop-filter: blur(16px) saturate(1.8);
+  backdrop-filter: blur(12px) saturate(1.6);
   box-shadow:
-    inset 0 1px 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent),
-    inset 0 -1px 2px 0 color-mix(in srgb, var(--background) 20%, transparent);
+    inset 0 1px 1px 0 color-mix(in srgb, var(--foreground) 6%, transparent),
+    inset 0 -1px 2px 0 color-mix(in srgb, var(--background) 10%, transparent);
 }
 
 /* ─── Animated Border (conic gradient + mask compositing) ─── */
