@@ -5,7 +5,7 @@ import { GlassCard } from "@/components/glass/glass-card";
 import { GlassButton } from "@/components/glass/glass-button";
 import { AnimatedBorder } from "@/components/glass/animated-border";
 import { GlassDialog } from "@/components/glass/glass-dialog";
-import { GlassContactForm } from "@/components/glass/glass-form";
+import { GlassContactForm, GlassInput } from "@/components/glass/glass-form";
 import { useState } from "react";
 
 export default function HomePage() {
@@ -14,8 +14,7 @@ export default function HomePage() {
   return (
     <main className="relative">
       {/* ═══════════════════════════════════════════════════════════════
-          HERO: Heading + value prop left, glass contact form right
-          Video embed below the fold
+          HERO: Centered heading, video left + form right, value prop, CTA
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         {/* Background */}
@@ -23,93 +22,102 @@ export default function HomePage() {
           className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
           style={{ backgroundImage: "url('/bg/video-production.png')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-black/50 dark:bg-black/60" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-28 md:pt-36 lg:pb-28">
-          {/* Two-column hero: copy left, form right */}
-          <div className="grid gap-12 lg:grid-cols-[1fr,420px] lg:items-center">
-            {/* Left: headline + value prop + video */}
-            <div className="flex flex-col gap-8">
-              <div>
-                <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
-                  Build Beautiful
-                  <br />
-                  <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
-                    Glass Interfaces
-                  </span>
-                </h1>
-                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">
-                  A native-ish design system for the web — Apple Liquid Glass
-                  refraction, animated conic-gradient borders, and Catppuccin
-                  colors. Built on Next.js 16, Tailwind v4, and shadcn.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <GlassButton
-                    variant="cta"
-                    size="lg"
-                    onClick={() => (window.location.href = "/components")}
-                  >
-                    Explore Components
-                  </GlassButton>
-                  <GlassButton
-                    variant="default"
-                    size="lg"
-                    onClick={() => setDialogOpen(true)}
-                  >
-                    Learn More
-                  </GlassButton>
-                </div>
-              </div>
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center px-6 pt-28 pb-16 md:pt-32">
+          {/* Centered heading */}
+          <h1 className="text-center text-5xl font-black leading-[1.1] tracking-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
+            Build Beautiful
+            <br />
+            <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
+              Glass Interfaces
+            </span>
+          </h1>
 
-              {/* YouTube — proper 16:9 aspect ratio */}
-              <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
-                <div className="relative w-full pb-[56.25%]">
-                  <iframe
-                    className="absolute inset-0 h-full w-full"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                    title="Demo Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
+          {/* Video left + Form right */}
+          <div className="mt-10 grid w-full items-start gap-6 md:grid-cols-2">
+            {/* YouTube — 16:9 */}
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+              <div className="relative w-full pb-[56.25%]">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                  title="Demo Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             </div>
 
-            {/* Right: glass contact form */}
-            <div className="lg:sticky lg:top-24">
-              <AnimatedBorder
-                borderRadius="1.5rem"
-                glowSpread="3rem"
-                glowBlur="2rem"
-                showGlow
-                animate
+            {/* Glass form card */}
+            <AnimatedBorder
+              borderRadius="1.5rem"
+              glowSpread="2rem"
+              glowBlur="1.5rem"
+              showGlow
+              animate
+            >
+              <GlassPanel
+                width={500}
+                height={400}
+                radius={24}
+                depth={8}
+                blur={2}
+                chromaticAberration={4}
+                className="!h-auto !w-full p-5"
               >
-                <GlassPanel
-                  width={420}
-                  height={600}
-                  radius={24}
-                  depth={8}
-                  blur={2}
-                  chromaticAberration={4}
-                  className="!h-auto !w-full p-6"
-                >
-                  <h2 className="mb-1 text-lg font-bold text-white drop-shadow-md">
-                    Get Started Today
-                  </h2>
-                  <p className="mb-5 text-sm text-white/50">
-                    Tell us about your project and we&apos;ll build something
-                    amazing.
-                  </p>
-                  <GlassContactForm />
-                  <div className="mt-5">
-                    <GlassButton variant="cta" size="lg" className="w-full">
-                      Send Message →
-                    </GlassButton>
+                <h2 className="mb-0.5 text-base font-bold text-white drop-shadow-md">
+                  Get Started Today
+                </h2>
+                <p className="mb-4 text-xs text-white/50">
+                  Tell us about your project.
+                </p>
+                <div className="flex flex-col gap-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <GlassInput placeholder="Name" />
+                    <GlassInput placeholder="Phone" type="tel" />
                   </div>
-                </GlassPanel>
-              </AnimatedBorder>
-            </div>
+                  <GlassInput placeholder="Email" type="email" />
+                  <GlassButton variant="cta" size="default" className="w-full mt-1">
+                    Join Waitlist →
+                  </GlassButton>
+                </div>
+              </GlassPanel>
+            </AnimatedBorder>
+          </div>
+
+          {/* Value prop below video */}
+          <p className="mt-6 max-w-xl text-center text-sm leading-relaxed text-white/60 md:text-left md:self-start md:text-base">
+            A native-ish design system for the web — Apple Liquid Glass
+            refraction, animated conic-gradient borders, and Catppuccin
+            colors. Built on Next.js 16, Tailwind v4, and shadcn.
+          </p>
+
+          {/* Centered CTA */}
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <GlassButton
+              variant="default"
+              size="lg"
+              onClick={() => (window.location.href = "/components")}
+            >
+              Explore Components
+            </GlassButton>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white/40 animate-bounce"
+            >
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
           </div>
         </div>
       </section>
