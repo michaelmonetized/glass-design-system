@@ -42,8 +42,9 @@ export function GlassSheet({
       <SheetContent
         side={side}
         className={cn(
-          "glass-morphism border-ctp-surface1/50 backdrop-blur-xl",
-          "bg-ctp-base/80 dark:bg-ctp-base/70",
+          "border-white/10 backdrop-blur-2xl",
+          "[background:color-mix(in_srgb,var(--ctp-base)_85%,transparent)_!important]",
+          "text-foreground",
           className
         )}
       >

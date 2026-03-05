@@ -22,7 +22,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
             variant="ghost"
             className={cn(
               "glass-morphism relative z-10 border-0 font-semibold",
-              "text-foreground hover:text-foreground",
+              "text-white hover:text-white drop-shadow-md",
               className
             )}
             size={size}
@@ -39,6 +39,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
           variant="ghost"
           className={cn(
             "hover:glass-morphism transition-all",
+            "text-white hover:text-white drop-shadow-md",
             className
           )}
           size={size}
@@ -52,9 +53,9 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
         ref={ref}
         variant="ghost"
         className={cn(
-          "glass-morphism border border-border/50 font-medium",
-          "text-foreground hover:text-foreground",
-          "hover:border-ctp-lavender/50 transition-all",
+          "glass-morphism border border-white/20 font-medium",
+          "text-white hover:text-white drop-shadow-md",
+          "hover:border-white/40 transition-all",
           className
         )}
         size={size}
