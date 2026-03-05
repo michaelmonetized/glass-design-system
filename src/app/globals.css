@@ -252,7 +252,7 @@
       transparent 70%,
       color-mix(in srgb, var(--background) 5%, transparent) 80%,
       transparent 100%
-    ) !important;
+    ) repeat fixed top left / 25dvw 25dvh !important;
   backdrop-filter: blur(10px) saturate(1.4) !important;
   box-shadow:
     inset 0 1px 0 0 color-mix(in srgb, white 10%, transparent),
