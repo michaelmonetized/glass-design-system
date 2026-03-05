@@ -19,6 +19,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
         <div className="animated-border-wrap animated-border-glow animated-border-spin inline-flex" style={{ "--ab-border-radius": "0.5rem", "--ab-border-width": "2px", "--ab-glow-spread": "2rem", "--ab-glow-blur": "1.5rem" } as React.CSSProperties}>
           <Button
             ref={ref}
+            variant="ghost"
             className={cn(
               "glass-morphism relative z-10 border-0 font-semibold",
               "text-foreground hover:text-foreground",
@@ -49,7 +50,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
     return (
       <Button
         ref={ref}
-        variant="outline"
+        variant="ghost"
         className={cn(
           "glass-morphism border border-border/50 font-medium",
           "text-foreground hover:text-foreground",
