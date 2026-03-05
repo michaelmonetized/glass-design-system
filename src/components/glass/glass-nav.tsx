@@ -6,8 +6,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { GlassSheet } from "./glass-sheet";
 import { GlassButton } from "./glass-button";
+import { useSidebar } from "./glass-sidebar";
 
 export interface NavItem {
   label: string;
@@ -30,7 +30,7 @@ export function GlassNav({ items = defaultItems, className }: GlassNavProps) {
   const navRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const { toggle: toggleSidebar } = useSidebar();
 
   const updateIndicator = useCallback(() => {
     const activeRef = itemRefs.current.get(pathname);
@@ -113,52 +113,23 @@ export function GlassNav({ items = defaultItems, className }: GlassNavProps) {
         <div className="flex items-center gap-2">
           <ThemeToggle />
 
-          {/* Mobile menu */}
-          <div className="md:hidden">
-            <GlassSheet
-              trigger={
-                <GlassButton variant="ghost" size="icon" className="md:hidden">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="4" x2="20" y1="12" y2="12" />
-                    <line x1="4" x2="20" y1="6" y2="6" />
-                    <line x1="4" x2="20" y1="18" y2="18" />
-                  </svg>
-                </GlassButton>
-              }
-              title="Navigation"
-              side="right"
-              open={mobileOpen}
-              onOpenChange={setMobileOpen}
+          {/* Sidebar toggle */}
+          <GlassButton variant="ghost" size="icon" onClick={toggleSidebar}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <nav className="flex flex-col gap-2 pt-4">
-                {items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "rounded-lg px-4 py-3 text-base font-medium transition-colors",
-                      pathname === item.href
-                        ? "bg-ctp-surface0 dark:bg-ctp-surface1 text-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-ctp-surface0/50"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-            </GlassSheet>
-          </div>
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M15 3v18" />
+            </svg>
+          </GlassButton>
         </div>
       </div>
     </header>

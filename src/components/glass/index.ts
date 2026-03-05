@@ -18,3 +18,9 @@ export type { GlassDialogProps } from "./glass-dialog";
 
 export { GlassSheet, SheetClose } from "./glass-sheet";
 export type { GlassSheetProps } from "./glass-sheet";
+
+export { GlassSidebarProvider, GlassSidebar, SidebarMain, useSidebar } from "./glass-sidebar";
+export type { GlassSidebarProps, GlassSidebarProviderProps } from "./glass-sidebar";
+
+export { GlassInput, GlassTextarea, GlassSelect, GlassCheckbox, GlassContactForm } from "./glass-form";
+export type { GlassInputProps, GlassTextareaProps, GlassSelectProps, GlassCheckboxProps } from "./glass-form";

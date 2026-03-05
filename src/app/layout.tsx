@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { GlassNav } from "@/components/glass/glass-nav";
+import { LayoutShell } from "@/components/layout-shell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Glass Design System",
-  description: "A native-ish web design system with Apple Liquid Glass refraction, animated borders, glass morphism, and Catppuccin colors",
+  description:
+    "A native-ish web design system with Apple Liquid Glass refraction, animated borders, glass morphism, and Catppuccin colors",
 };
 
 export default function RootLayout({
@@ -35,8 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
-        <GlassNav />
-        {children}
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );

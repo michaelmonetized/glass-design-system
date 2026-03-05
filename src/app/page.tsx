@@ -5,6 +5,7 @@ import { GlassCard } from "@/components/glass/glass-card";
 import { GlassButton } from "@/components/glass/glass-button";
 import { AnimatedBorder } from "@/components/glass/animated-border";
 import { GlassDialog } from "@/components/glass/glass-dialog";
+import { GlassContactForm } from "@/components/glass/glass-form";
 import { useState } from "react";
 
 export default function HomePage() {
@@ -12,6 +13,77 @@ export default function HomePage() {
 
   return (
     <main className="relative">
+      {/* ═══════════════════════════════════════════════════════════════
+          HERO: Heading + value prop, YouTube left, contact form right
+          ═══════════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Background */}
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/video-production.png')" }}
+        >
+          <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 md:py-32">
+          {/* Heading + value prop */}
+          <div className="mb-12 max-w-3xl">
+            <h1 className="text-4xl font-black tracking-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
+              Build Beautiful
+              <br />
+              <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
+                Glass Interfaces
+              </span>
+            </h1>
+            <p className="mt-4 max-w-xl text-lg text-white/70 drop-shadow-sm md:text-xl">
+              A native-ish design system for the web. Apple Liquid Glass
+              refraction, animated borders, and Catppuccin colors — all built on
+              Next.js, Tailwind, and shadcn.
+            </p>
+          </div>
+
+          {/* Two-column: YouTube left, Contact form right */}
+          <div className="grid items-start gap-8 lg:grid-cols-2">
+            {/* YouTube embed */}
+            <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                  title="Demo Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Glass contact form card */}
+            <AnimatedBorder
+              borderRadius="1.5rem"
+              glowSpread="3rem"
+              glowBlur="2rem"
+              showGlow
+              animate
+            >
+              <div className="glass-morphism rounded-3xl p-6 md:p-8">
+                <h2 className="mb-1 text-xl font-bold text-white drop-shadow-md">
+                  Get Started Today
+                </h2>
+                <p className="mb-6 text-sm text-white/60 drop-shadow-sm">
+                  Tell us about your project and we&apos;ll build something amazing.
+                </p>
+                <GlassContactForm />
+                <div className="mt-5">
+                  <GlassButton variant="cta" size="lg" className="w-full">
+                    Send Message →
+                  </GlassButton>
+                </div>
+              </div>
+            </AnimatedBorder>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: Video Hero — Glass refraction over looping video
           ═══════════════════════════════════════════════════════════════ */}

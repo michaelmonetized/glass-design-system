@@ -6,11 +6,12 @@ import { GlassCard } from "@/components/glass/glass-card";
 import { GlassButton } from "@/components/glass/glass-button";
 import { AnimatedBorder } from "@/components/glass/animated-border";
 import { GlassDialog } from "@/components/glass/glass-dialog";
-import { GlassSheet } from "@/components/glass/glass-sheet";
+import { useSidebar } from "@/components/glass/glass-sidebar";
+import { GlassInput, GlassTextarea, GlassSelect, GlassCheckbox, GlassContactForm } from "@/components/glass/glass-form";
 
 export default function ComponentsPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [sheetOpen, setSheetOpen] = useState(false);
+  const { toggle: toggleSidebar } = useSidebar();
 
   const [panelWidth, setPanelWidth] = useState(320);
   const [panelHeight, setPanelHeight] = useState(200);
@@ -181,40 +182,78 @@ export default function ComponentsPage() {
           </GlassDialog>
         </section>
 
-        {/* ─── GlassSheet ─── */}
+        {/* ─── GlassSidebar ─── */}
         <section>
-          <h2 className="mb-6 text-2xl font-bold text-foreground">GlassSheet</h2>
+          <h2 className="mb-6 text-2xl font-bold text-foreground">GlassSidebar</h2>
           <p className="mb-6 text-sm text-muted-foreground">
-            Side panel with glass effect, great for mobile navigation or settings.
+            Apple-style sidebar that shifts main content. No overlay — main area
+            stays interactive and scrollable. 0.5rem corner inset, 1rem radius, glass morphism.
           </p>
 
-          <GlassButton variant="default" onClick={() => setSheetOpen(true)}>
-            Open Sheet
+          <GlassButton variant="default" onClick={toggleSidebar}>
+            Toggle Sidebar
           </GlassButton>
+        </section>
 
-          <GlassSheet
-            open={sheetOpen}
-            onOpenChange={setSheetOpen}
-            title="Glass Sheet"
-            description="A side panel with glass morphism."
-          >
-            <div className="space-y-4 pt-4">
-              <p className="text-sm text-muted-foreground">
-                This sheet slides in from the side with a glass morphism background.
-                Perfect for settings panels, mobile navigation, or any supplementary content.
-              </p>
-              <div className="space-y-2">
-                {["Option A", "Option B", "Option C"].map((opt) => (
-                  <div
-                    key={opt}
-                    className="rounded-lg bg-ctp-surface0/50 p-3 text-sm font-medium text-foreground"
-                  >
-                    {opt}
-                  </div>
-                ))}
+        {/* ─── Glass Form Components ─── */}
+        <section>
+          <h2 className="mb-6 text-2xl font-bold text-foreground">Glass Forms</h2>
+          <p className="mb-6 text-sm text-muted-foreground">
+            Transparent form inputs designed for glass surfaces. Best viewed over
+            image or gradient backgrounds.
+          </p>
+
+          {/* Form demo over image bg */}
+          <div className="relative overflow-hidden rounded-2xl">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/bg/direct-approach.png')" }}
+            >
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+            <div className="relative z-10 p-8 md:p-12">
+              <div className="mx-auto max-w-md">
+                <h3 className="mb-6 text-lg font-bold text-white drop-shadow-md">
+                  Contact Form
+                </h3>
+                <GlassContactForm />
+                <div className="mt-5">
+                  <GlassButton variant="cta" className="w-full">
+                    Submit
+                  </GlassButton>
+                </div>
               </div>
             </div>
-          </GlassSheet>
+          </div>
+
+          {/* Individual inputs demo */}
+          <div className="relative mt-8 overflow-hidden rounded-2xl">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/bg/campaign-monitoring.webp')" }}
+            >
+              <div className="absolute inset-0 bg-black/50" />
+            </div>
+            <div className="relative z-10 grid gap-6 p-8 md:grid-cols-2 md:p-12">
+              <GlassInput label="Text Input" placeholder="Type something..." />
+              <GlassInput label="With Error" placeholder="Invalid" error="This field is required" />
+              <GlassSelect
+                label="Select"
+                options={[
+                  { value: "", label: "Choose an option..." },
+                  { value: "a", label: "Option A" },
+                  { value: "b", label: "Option B" },
+                ]}
+              />
+              <div className="flex flex-col gap-3">
+                <GlassCheckbox label="Checkbox unchecked" />
+                <GlassCheckbox label="Checkbox checked" defaultChecked />
+              </div>
+              <div className="md:col-span-2">
+                <GlassTextarea label="Textarea" placeholder="Write a longer message..." rows={3} />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ─── Glass Morphism ─── */}
