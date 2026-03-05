@@ -1,0 +1,380 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── @property for animated conic gradient ─── */
+@property --conic-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  from { --conic-angle: 0deg; }
+  to { --conic-angle: 360deg; }
+}
+
+/* ─── Catppuccin + shadcn theme mapping ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* ─── Catppuccin palette tokens ─── */
+  --color-ctp-rosewater: var(--ctp-rosewater);
+  --color-ctp-flamingo: var(--ctp-flamingo);
+  --color-ctp-pink: var(--ctp-pink);
+  --color-ctp-mauve: var(--ctp-mauve);
+  --color-ctp-red: var(--ctp-red);
+  --color-ctp-maroon: var(--ctp-maroon);
+  --color-ctp-peach: var(--ctp-peach);
+  --color-ctp-yellow: var(--ctp-yellow);
+  --color-ctp-green: var(--ctp-green);
+  --color-ctp-teal: var(--ctp-teal);
+  --color-ctp-sky: var(--ctp-sky);
+  --color-ctp-sapphire: var(--ctp-sapphire);
+  --color-ctp-blue: var(--ctp-blue);
+  --color-ctp-lavender: var(--ctp-lavender);
+  --color-ctp-text: var(--ctp-text);
+  --color-ctp-subtext1: var(--ctp-subtext1);
+  --color-ctp-subtext0: var(--ctp-subtext0);
+  --color-ctp-overlay2: var(--ctp-overlay2);
+  --color-ctp-overlay1: var(--ctp-overlay1);
+  --color-ctp-overlay0: var(--ctp-overlay0);
+  --color-ctp-surface2: var(--ctp-surface2);
+  --color-ctp-surface1: var(--ctp-surface1);
+  --color-ctp-surface0: var(--ctp-surface0);
+  --color-ctp-base: var(--ctp-base);
+  --color-ctp-mantle: var(--ctp-mantle);
+  --color-ctp-crust: var(--ctp-crust);
+
+  /* Glass-specific tokens */
+  --color-glass-border-pink: var(--glass-border-pink);
+  --color-glass-border-blue: var(--glass-border-blue);
+}
+
+/* ─── Catppuccin Latte (Light Mode) ─── */
+:root {
+  --radius: 0.75rem;
+
+  /* Catppuccin Latte palette */
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-maroon: #e64553;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext1: #5c5f77;
+  --ctp-subtext0: #6c6f85;
+  --ctp-overlay2: #7c7f93;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-overlay0: #9ca0b0;
+  --ctp-surface2: #acb0be;
+  --ctp-surface1: #bcc0cc;
+  --ctp-surface0: #ccd0da;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+
+  /* Animated border accent */
+  --glass-border-pink: #ea76cb;
+  --glass-border-blue: #1e66f5;
+  --glass-glow-intensity: 0.4;
+
+  /* shadcn semantic mapping → Catppuccin Latte */
+  --background: #eff1f5;
+  --foreground: #4c4f69;
+  --card: #e6e9ef;
+  --card-foreground: #4c4f69;
+  --popover: #eff1f5;
+  --popover-foreground: #4c4f69;
+  --primary: #1e66f5;
+  --primary-foreground: #eff1f5;
+  --secondary: #ccd0da;
+  --secondary-foreground: #4c4f69;
+  --muted: #ccd0da;
+  --muted-foreground: #6c6f85;
+  --accent: #7287fd;
+  --accent-foreground: #eff1f5;
+  --destructive: #d20f39;
+  --border: #bcc0cc;
+  --input: #bcc0cc;
+  --ring: #7287fd;
+  --chart-1: #1e66f5;
+  --chart-2: #40a02b;
+  --chart-3: #8839ef;
+  --chart-4: #fe640b;
+  --chart-5: #ea76cb;
+  --sidebar: #e6e9ef;
+  --sidebar-foreground: #4c4f69;
+  --sidebar-primary: #1e66f5;
+  --sidebar-primary-foreground: #eff1f5;
+  --sidebar-accent: #ccd0da;
+  --sidebar-accent-foreground: #4c4f69;
+  --sidebar-border: #bcc0cc;
+  --sidebar-ring: #7287fd;
+}
+
+/* ─── Catppuccin Mocha (Dark Mode) ─── */
+.dark {
+  /* Catppuccin Mocha palette */
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
+
+  /* Animated border accent */
+  --glass-border-pink: #f5c2e7;
+  --glass-border-blue: #89b4fa;
+  --glass-glow-intensity: 0.2;
+
+  /* shadcn semantic mapping → Catppuccin Mocha */
+  --background: #1e1e2e;
+  --foreground: #cdd6f4;
+  --card: #181825;
+  --card-foreground: #cdd6f4;
+  --popover: #313244;
+  --popover-foreground: #cdd6f4;
+  --primary: #89b4fa;
+  --primary-foreground: #1e1e2e;
+  --secondary: #313244;
+  --secondary-foreground: #cdd6f4;
+  --muted: #313244;
+  --muted-foreground: #a6adc8;
+  --accent: #b4befe;
+  --accent-foreground: #1e1e2e;
+  --destructive: #f38ba8;
+  --border: #45475a;
+  --input: #45475a;
+  --ring: #b4befe;
+  --chart-1: #89b4fa;
+  --chart-2: #a6e3a1;
+  --chart-3: #cba6f7;
+  --chart-4: #fab387;
+  --chart-5: #f5c2e7;
+  --sidebar: #181825;
+  --sidebar-foreground: #cdd6f4;
+  --sidebar-primary: #89b4fa;
+  --sidebar-primary-foreground: #1e1e2e;
+  --sidebar-accent: #313244;
+  --sidebar-accent-foreground: #cdd6f4;
+  --sidebar-border: #45475a;
+  --sidebar-ring: #b4befe;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ─── Glass Morphism ─── */
+.glass-morphism {
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--background) 40%, transparent)
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      color-mix(in srgb, var(--background) 80%, transparent) 50%,
+      var(--background) 60%,
+      transparent 70%,
+      var(--background) 80%,
+      transparent 100%
+    ),
+    linear-gradient(
+      0deg,
+      var(--background) 0%,
+      color-mix(in srgb, var(--background) 20%, transparent) 100%
+    );
+  backdrop-filter: blur(16px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent),
+    inset 0 -1px 2px 0 color-mix(in srgb, var(--background) 20%, transparent);
+}
+
+/* ─── Animated Border (conic gradient + mask compositing) ─── */
+.animated-border-wrap {
+  position: relative;
+  isolation: isolate;
+  z-index: 3;
+  overflow: visible;
+}
+
+.animated-border-wrap::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: var(--ab-border-radius, 1rem);
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent,
+    color-mix(in srgb, var(--glass-border-pink) 66%, transparent),
+    var(--glass-border-blue),
+    var(--glass-border-pink),
+    transparent
+  );
+  pointer-events: none;
+  z-index: -1;
+  inset: calc(var(--ab-border-width, 2px) * -1);
+  padding: var(--ab-border-width, 2px);
+  --mask-outer: linear-gradient(#fff 0 0);
+  --mask-inner: linear-gradient(#fff 0 0) content-box;
+  mask: var(--mask-outer), var(--mask-inner);
+  mask-composite: exclude;
+  -webkit-mask: var(--mask-outer), var(--mask-inner);
+  -webkit-mask-composite: xor;
+}
+
+/* Hover-only variant: border hidden until hover */
+.animated-border-wrap-hover {
+  position: relative;
+  isolation: isolate;
+  z-index: 3;
+  overflow: visible;
+}
+
+.animated-border-wrap-hover::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: var(--ab-border-radius, 1rem);
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent,
+    color-mix(in srgb, var(--glass-border-pink) 66%, transparent),
+    var(--glass-border-blue),
+    var(--glass-border-pink),
+    transparent
+  );
+  pointer-events: none;
+  z-index: -1;
+  inset: -2px;
+  padding: 2px;
+  --mask-outer: linear-gradient(#fff 0 0);
+  --mask-inner: linear-gradient(#fff 0 0) content-box;
+  mask: var(--mask-outer), var(--mask-inner);
+  mask-composite: exclude;
+  -webkit-mask: var(--mask-outer), var(--mask-inner);
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: border-spin 3s linear infinite;
+}
+
+.animated-border-wrap-hover:hover::after {
+  opacity: 1;
+}
+
+/* ─── Border Glow ─── */
+.animated-border-glow::before {
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: calc(var(--ab-border-radius, 1rem) + var(--ab-glow-spread, 5rem));
+  background: conic-gradient(
+    from var(--conic-angle),
+    transparent,
+    color-mix(in srgb, var(--glass-border-pink) 66%, transparent),
+    var(--glass-border-blue),
+    var(--glass-border-pink),
+    transparent
+  );
+  pointer-events: none;
+  inset: calc(var(--ab-glow-spread, 5rem) * -1);
+  filter: blur(var(--ab-glow-blur, 3.5rem));
+  opacity: var(--glass-glow-intensity, 0.3);
+  z-index: -2;
+}
+
+/* ─── Spin animation ─── */
+.animated-border-spin::before,
+.animated-border-spin::after {
+  animation: border-spin var(--ab-duration, 3s) linear infinite;
+}
+
+/* ─── Smooth transitions for theme switching ─── */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
