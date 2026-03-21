@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatedBorder } from "./animated-border";
+import { useGlassSurface } from "./use-glass-surface";
 
 export interface GlassCardProps {
   children?: ReactNode;
@@ -17,13 +18,23 @@ export function GlassCard({
   featured = false,
   hoverBorder = true,
 }: GlassCardProps) {
+  const { ref, style, interactionHandlers } = useGlassSurface<HTMLDivElement>({
+    depth: 8,
+    blur: 2,
+    strength: 100,
+    chromaticAberration: 6,
+  });
+
   const card = (
     <div
+      ref={ref}
       className={cn(
-        "glass-morphism rounded-2xl p-6",
+        "rounded-2xl p-6",
         hoverBorder && !featured && "group",
         className
       )}
+      style={style}
+      {...interactionHandlers}
     >
       {children}
     </div>
@@ -31,7 +42,7 @@ export function GlassCard({
 
   if (featured) {
     return (
-      <AnimatedBorder borderRadius="1rem" showGlow animate>
+      <AnimatedBorder borderRadius="var(--radius-2xl)" showGlow animate>
         {card}
       </AnimatedBorder>
     );
@@ -39,7 +50,10 @@ export function GlassCard({
 
   if (hoverBorder) {
     return (
-      <div className="animated-border-wrap-hover">
+      <div
+        className="animated-border-wrap-hover"
+        style={{ "--ab-border-radius": "var(--radius-2xl)" } as CSSProperties}
+      >
         {card}
       </div>
     );

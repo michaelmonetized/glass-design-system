@@ -18,10 +18,8 @@ import { GlassButton } from "@/components/glass/glass-button";
 export function LayoutShell({ children }: { children: ReactNode }) {
   return (
     <GlassSidebarProvider side="right" width="20rem">
-      <SidebarMain>
-        <GlassNav />
-        {children}
-      </SidebarMain>
+      <GlassNav />
+      <SidebarMain>{children}</SidebarMain>
 
       <GlassSidebar
         title="Quick Contact"

@@ -59,14 +59,7 @@ export function GlassSidebarProvider({
 
   return (
     <SidebarContext.Provider value={{ open, toggle, setOpen, side, width }}>
-      <div
-        className="flex min-h-screen transition-all duration-300 ease-out"
-        style={{
-          flexDirection: side === "right" ? "row" : "row-reverse",
-        }}
-      >
-        {children}
-      </div>
+      <div className="min-h-screen">{children}</div>
     </SidebarContext.Provider>
   );
 }
@@ -79,13 +72,14 @@ export function SidebarMain({
   children: ReactNode;
   className?: string;
 }) {
-  const { open, width } = useSidebar();
+  const { open, side, width } = useSidebar();
 
   return (
     <div
       className={cn("flex-1 min-w-0 transition-all duration-300 ease-out", className)}
       style={{
-        marginRight: open ? width : "0",
+        marginLeft: side === "left" && open ? width : "0",
+        marginRight: side === "right" && open ? width : "0",
       }}
     >
       {children}

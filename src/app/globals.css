@@ -95,6 +95,7 @@
 /* ─── Catppuccin Latte (Light Mode) ─── */
 :root {
   --radius: 0.75rem;
+  --corner-shape-rounded: squircle;
 
   /* Catppuccin Latte palette */
   --ctp-rosewater: #dc8a78;
@@ -238,6 +239,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@supports (corner-shape: squircle) {
+  :where(*, *::before, *::after) {
+    corner-shape: var(--corner-shape-rounded, squircle);
   }
 }
 

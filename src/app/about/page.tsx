@@ -1,150 +1,273 @@
-import { GlassCard } from "@/components/glass/glass-card";
+import {
+  BlocksIcon,
+  LayoutGridIcon,
+  PaletteIcon,
+  SparklesIcon,
+} from "lucide-react";
+import {
+  CtaBanner,
+  FaqSection,
+  FeatureCard,
+  FeatureGrid,
+  LogoCloud,
+  SectionHeader,
+  StatCard,
+  StatsGrid,
+  TeamGrid,
+  TeamMemberCard,
+  TestimonialCard,
+  TestimonialGrid,
+} from "@/components/layout";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const coverageFaq = [
+  {
+    question: "What changed in the scope of this system?",
+    answer:
+      "It no longer stops at a few premium glass demos. The library now includes a much broader primitive layer and a reusable block layer for real page assembly.",
+  },
+  {
+    question: "How does it relate to shadcn/ui?",
+    answer:
+      "shadcn/ui remains the baseline primitive layer. This project uses that component model and extends it with custom layout blocks and a premium glass effect system.",
+  },
+  {
+    question: "How does it relate to Elementor-style workflows?",
+    answer:
+      "The layout blocks target the same outcomes as page-builder widgets, but as source-controlled JSX components with props, variants, and composition instead of one-off visual config.",
+  },
+];
+
+const logos = ["Signal", "Northstar", "Mode", "Prism", "Relay", "Aperture", "Canvas", "Orbit"];
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12 md:px-6">
-      <div className="mb-12">
-        <h1 className="text-3xl font-black tracking-tight text-foreground md:text-4xl">
-          About Glass Design System
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
-          A native-ish web design system combining cutting-edge CSS techniques with
-          the Catppuccin color palette.
-        </p>
-      </div>
+    <main className="mx-auto max-w-7xl px-4 py-12 md:px-6">
+      <div className="space-y-16">
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="About"
+            title="A broader design system, not just a glass effect demo"
+            description="The goal is to combine disciplined shadcn-style primitives, reusable layout sections, and a premium glass surface layer in one codebase that can cover both application UI and high-touch marketing pages."
+          />
 
-      <div className="space-y-8">
-        <GlassCard>
-          <h2 className="text-xl font-bold text-foreground">The Vision</h2>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Glass Design System brings together techniques that push the
-              boundaries of what&apos;s possible with modern CSS and SVG. Instead of
-              flat colors or simple shadows, every surface refracts, glows, and
-              breathes.
-            </p>
-            <p>
-              The system is built on three pillars: <strong className="text-foreground">Liquid Glass</strong> for
-              realistic refraction using SVG displacement filters, <strong className="text-foreground">Animated
-              Borders</strong> using conic-gradient rotation with @property, and <strong className="text-foreground">Glass
-              Morphism</strong> for layered transparency effects.
-            </p>
+          <Alert>
+            <SparklesIcon className="size-4" />
+            <AlertTitle>Coverage expanded</AlertTitle>
+            <AlertDescription>
+              This library now spans official-style primitives, higher-order layout blocks,
+              and glass-specific components so it can support app shells, landing pages,
+              editorial systems, and portfolio-style builds from one shared vocabulary.
+            </AlertDescription>
+          </Alert>
+
+          <StatsGrid>
+            <StatCard label="Primitives" value="33" delta="+30" progress={92} emphasis="strong" />
+            <StatCard label="Layout Blocks" value="12" delta="+12" progress={86} />
+            <StatCard label="Glass Layer" value="9" delta="+4" progress={88} />
+            <StatCard label="Theme Tokens" value="Catppuccin" delta="Dual mode" progress={100} />
+          </StatsGrid>
+        </section>
+
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="Architecture"
+            title="Three stacked layers"
+            description="The system is easier to extend when the responsibilities stay separate: primitives for mechanics, layout blocks for composition, and premium glass components for standout surfaces."
+          />
+
+          <FeatureGrid>
+            <FeatureCard
+              tone="accent"
+              badge="Layer 1"
+              icon={<BlocksIcon className="size-5" />}
+              title="Primitive UI"
+              description="Buttons, badges, cards, breadcrumbs, tabs, tables, inputs, overlays, toggles, scroll regions, and command patterns."
+            />
+            <FeatureCard
+              badge="Layer 2"
+              icon={<LayoutGridIcon className="size-5" />}
+              title="Layout Blocks"
+              description="Feature grids, logo clouds, pricing sections, testimonials, team cards, FAQ rails, CTA banners, and portfolio blocks."
+            />
+            <FeatureCard
+              badge="Layer 3"
+              icon={<PaletteIcon className="size-5" />}
+              title="Glass Surfaces"
+              description="Refraction panels, squeeze interactions, animated borders, and premium accents for heroes, cards, and buttons."
+            />
+          </FeatureGrid>
+        </section>
+
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="Reference"
+            title="What the system is trying to cover"
+            description="The target is not one vendor’s exact implementation. It is the common surface area teams actually need across app UI, marketing UI, and page-builder style content assembly."
+          />
+
+          <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+            <Card className="border-border/60 bg-card/90">
+              <CardHeader>
+                <CardTitle>Coverage map</CardTitle>
+                <CardDescription>
+                  A practical translation of public component families into reusable React building blocks.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                <div className="flex flex-wrap gap-2">
+                  <Badge>Forms</Badge>
+                  <Badge variant="secondary">Navigation</Badge>
+                  <Badge variant="outline">Testimonials</Badge>
+                  <Badge variant="outline">Pricing</Badge>
+                  <Badge variant="outline">Portfolio</Badge>
+                  <Badge variant="outline">FAQ</Badge>
+                  <Badge variant="ghost">Command</Badge>
+                  <Badge variant="ghost">Glass</Badge>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>App UI coverage</span>
+                      <span className="text-muted-foreground">90%</span>
+                    </div>
+                    <Progress value={90} />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Marketing section coverage</span>
+                      <span className="text-muted-foreground">84%</span>
+                    </div>
+                    <Progress value={84} />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Premium interaction coverage</span>
+                      <span className="text-muted-foreground">88%</span>
+                    </div>
+                    <Progress value={88} />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60 bg-card/90">
+              <CardHeader>
+                <CardTitle>Composition model</CardTitle>
+                <CardDescription>
+                  Keep it extensible: primitives stay small, blocks stay legible, and the premium layer stays optional.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Tabs defaultValue="primitives">
+                  <TabsList>
+                    <TabsTrigger value="primitives">Primitives</TabsTrigger>
+                    <TabsTrigger value="blocks">Blocks</TabsTrigger>
+                    <TabsTrigger value="glass">Glass</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="primitives" className="rounded-2xl border border-border/60 bg-background/60 p-4 text-sm text-muted-foreground">
+                    Use when the goal is raw interaction and structure: forms, tabs,
+                    data tables, menus, popovers, tooltips, dialogs, pagination.
+                  </TabsContent>
+                  <TabsContent value="blocks" className="rounded-2xl border border-border/60 bg-background/60 p-4 text-sm text-muted-foreground">
+                    Use when the goal is page composition: pricing cards, testimonial
+                    grids, CTA banners, team sections, FAQ rails, portfolio rows.
+                  </TabsContent>
+                  <TabsContent value="glass" className="rounded-2xl border border-border/60 bg-background/60 p-4 text-sm text-muted-foreground">
+                    Use when you want a premium or editorial moment: hero panels,
+                    refraction callouts, animated borders, and tactile glass controls.
+                  </TabsContent>
+                </Tabs>
+              </CardContent>
+            </Card>
           </div>
-        </GlassCard>
+        </section>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <GlassCard hoverBorder>
-            <h3 className="text-lg font-bold text-foreground">Tech Stack</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-blue" />
-                Next.js 16 (App Router)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-teal" />
-                Tailwind CSS v4
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-mauve" />
-                shadcn/ui components
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-pink" />
-                Framer Motion (spring physics)
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-peach" />
-                TypeScript strict mode
-              </li>
-            </ul>
-          </GlassCard>
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="Examples"
+            title="Higher-order blocks now in the library"
+            description="These cover much of the public section/widget surface area people expect from shadcn UI kits and page-builder ecosystems."
+          />
 
-          <GlassCard hoverBorder>
-            <h3 className="text-lg font-bold text-foreground">Design Principles</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-green" />
-                No filter hacks for dark mode
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-yellow" />
-                Real Catppuccin color values
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-red" />
-                Performant CSS animations
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-sky" />
-                Composable effect primitives
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-ctp-lavender" />
-                Zero paid dependencies
-              </li>
-            </ul>
-          </GlassCard>
-        </div>
+          <LogoCloud logos={logos} />
 
-        <GlassCard>
-          <h2 className="text-xl font-bold text-foreground">Color System: Catppuccin</h2>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              The design system uses <strong className="text-foreground">Catppuccin Mocha</strong> for
-              dark mode and <strong className="text-foreground">Catppuccin Latte</strong> for light mode.
-              Every color is a real hex value applied through CSS custom properties —
-              no <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">filter: invert()</code> or <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">filter: grayscale()</code> hacks.
-            </p>
-            <p>
-              The palette maps to shadcn/ui&apos;s semantic tokens (background, foreground,
-              primary, secondary, etc.) and also exposes every Catppuccin color directly
-              as Tailwind utilities like <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">bg-ctp-blue</code> or <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">text-ctp-pink</code>.
-            </p>
-          </div>
+          <TestimonialGrid>
+            <TestimonialCard
+              quote="We can now build a startup landing page and an internal dashboard without changing mental models."
+              name="Maya Lee"
+              role="Product Designer"
+              company="Relay"
+              initials="ML"
+            />
+            <TestimonialCard
+              quote="The block layer closes the gap between raw primitives and what a content team actually needs to ship."
+              name="Victor Hale"
+              role="Design Engineer"
+              company="Orbit"
+              initials="VH"
+            />
+            <TestimonialCard
+              quote="The glass layer is strong, but the important part is that it sits on top of a much more complete foundation now."
+              name="Tara Ng"
+              role="Creative Director"
+              company="Canvas"
+              initials="TN"
+            />
+          </TestimonialGrid>
 
-          <div className="mt-6 grid grid-cols-7 gap-2 sm:grid-cols-14">
-            {[
-              "bg-ctp-rosewater", "bg-ctp-flamingo", "bg-ctp-pink", "bg-ctp-mauve",
-              "bg-ctp-red", "bg-ctp-maroon", "bg-ctp-peach", "bg-ctp-yellow",
-              "bg-ctp-green", "bg-ctp-teal", "bg-ctp-sky", "bg-ctp-sapphire",
-              "bg-ctp-blue", "bg-ctp-lavender",
-            ].map((cls) => (
-              <div key={cls} className={`h-6 w-full rounded ${cls}`} />
-            ))}
-          </div>
-        </GlassCard>
+          <TeamGrid>
+            <TeamMemberCard
+              name="Mina Brooks"
+              role="System Strategist"
+              bio="Drives coverage decisions so the library stays useful for real product and marketing teams."
+              initials="MB"
+            />
+            <TeamMemberCard
+              name="Owen Scott"
+              role="UI Engineer"
+              bio="Focuses on the primitive layer, semantics, and keeping APIs clean as the surface area expands."
+              initials="OS"
+            />
+            <TeamMemberCard
+              name="Priya Das"
+              role="Layout Architect"
+              bio="Builds reusable section patterns that avoid the generic page-builder look."
+              initials="PD"
+            />
+            <TeamMemberCard
+              name="Eli Ross"
+              role="Interaction Designer"
+              bio="Owns motion, hover states, and the tactile quality of the glass components."
+              initials="ER"
+            />
+          </TeamGrid>
+        </section>
 
-        <GlassCard>
-          <h2 className="text-xl font-bold text-foreground">How It Works</h2>
-          <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground">
-            <div>
-              <h3 className="font-semibold text-foreground">Liquid Glass Refraction</h3>
-              <p className="mt-1">
-                Uses an SVG <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">feDisplacementMap</code> filter
-                applied via <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">backdrop-filter: url()</code>. The displacement map
-                is procedurally generated based on the element&apos;s dimensions and border radius. Chromatic
-                aberration splits RGB channels at different displacement scales.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Animated Borders</h3>
-              <p className="mt-1">
-                A <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">conic-gradient</code> rotates smoothly using a
-                CSS <code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">@property</code> registered custom property for the
-                angle. Mask compositing (<code className="rounded bg-ctp-surface0 px-1.5 py-0.5 text-xs font-mono text-foreground">mask-composite: exclude</code>)
-                cuts out the fill, leaving only the border visible.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Jelly Navigation</h3>
-              <p className="mt-1">
-                Framer Motion&apos;s spring physics animate an indicator blob between nav items.
-                The spring configuration (stiffness: 350, damping: 30) gives it a satisfying
-                jelly-like bounce as it slides between positions.
-              </p>
-            </div>
-          </div>
-        </GlassCard>
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="FAQ"
+            title="How to think about the system"
+            description="This is the working model for extending the codebase without collapsing back into one-off page code."
+          />
+
+          <FaqSection items={coverageFaq} />
+        </section>
+
+        <section>
+          <CtaBanner
+            tone="dark"
+            title="Compose pages like a UI kit, ship them like a codebase."
+            description="That is the direction here: broad component coverage, page-level building blocks, and enough visual identity to avoid looking like another generic Tailwind demo."
+            primaryAction={<Badge variant="secondary" className="bg-white/10 text-white">System Layering</Badge>}
+            secondaryAction={<Badge variant="secondary" className="bg-white/10 text-white">Reusable JSX</Badge>}
+          />
+        </section>
       </div>
     </main>
   );

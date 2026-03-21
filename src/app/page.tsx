@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { GlassPanel } from "@/components/glass/glass-panel";
 import { GlassCard } from "@/components/glass/glass-card";
 import { GlassButton } from "@/components/glass/glass-button";
 import { AnimatedBorder } from "@/components/glass/animated-border";
 import { GlassDialog } from "@/components/glass/glass-dialog";
-import { GlassContactForm, GlassInput } from "@/components/glass/glass-form";
+import { GlassInput } from "@/components/glass/glass-form";
 import { useState } from "react";
 
 export default function HomePage() {
@@ -18,36 +19,50 @@ export default function HomePage() {
           ═══════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         {/* Background */}
-        <div
-          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
-          style={{ backgroundImage: "url('/bg/video-production.png')" }}
-        >
+        <div className="absolute inset-0 -z-10">
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            playsInline
+            loop
+            poster="/bg/video-production.png"
+          >
+            <source src="/bg/hero-video.webm" type="video/webm" />
+          </video>
           <div className="absolute inset-0 bg-black/50 dark:bg-black/60" />
         </div>
 
         <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center px-6 pt-28 pb-16 md:pt-32">
-          {/* Centered heading */}
-          <h1 className="text-center text-5xl font-black leading-[1.1] tracking-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
-            Build Beautiful
-            <br />
-            <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
-              Glass Interfaces
-            </span>
-          </h1>
-
           {/* Video left + Form right */}
-          <div className="mt-10 grid w-full items-start gap-6 md:grid-cols-2">
-            {/* YouTube — 16:9 */}
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
-              <div className="relative w-full pb-[56.25%]">
-                <iframe
-                  className="absolute inset-0 h-full w-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
-                  title="Demo Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+          <div className="mt-10 grid w-full items-center gap-16 md:grid-cols-2">
+            <div>
+              {/* left heading */}
+              <h1 className="text-balance text-5xl font-black leading-[1.1] tracking-tight text-white drop-shadow-lg">
+                Build Beautiful{" "}
+                <span className="bg-gradient-to-r from-ctp-blue to-ctp-pink bg-clip-text text-transparent">
+                  Glass Interfaces
+                </span>
+              </h1>
+
+              {/* YouTube — 16:9 */}
+              <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+                <div className="relative w-full pb-[56.25%]">
+                  <iframe
+                    className="absolute inset-0 h-full w-full"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1"
+                    title="Demo Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
               </div>
+              {/* Value prop below video */}
+              <p className="mt-6 max-w-xl text-center text-sm leading-relaxed text-white/60 md:text-left md:self-start md:text-base">
+                A native-ish design system for the web — Apple Liquid Glass
+                refraction, animated conic-gradient borders, and Catppuccin
+                colors. Built on Next.js 16, Tailwind v4, and shadcn.
+              </p>
             </div>
 
             {/* Glass form card */}
@@ -79,29 +94,24 @@ export default function HomePage() {
                     <GlassInput placeholder="Phone" type="tel" />
                   </div>
                   <GlassInput placeholder="Email" type="email" />
-                  <GlassButton variant="cta" size="default" className="w-full mt-1">
-                    Join Waitlist →
-                  </GlassButton>
+                  <div className="flex justify-end">
+                    <GlassButton variant="cta" size="default">
+                      Join Waitlist →
+                    </GlassButton>
+                  </div>
                 </div>
               </GlassPanel>
             </AnimatedBorder>
           </div>
-
-          {/* Value prop below video */}
-          <p className="mt-6 max-w-xl text-center text-sm leading-relaxed text-white/60 md:text-left md:self-start md:text-base">
-            A native-ish design system for the web — Apple Liquid Glass
-            refraction, animated conic-gradient borders, and Catppuccin
-            colors. Built on Next.js 16, Tailwind v4, and shadcn.
-          </p>
 
           {/* Centered CTA */}
           <div className="mt-8 flex flex-col items-center gap-3">
             <GlassButton
               variant="default"
               size="lg"
-              onClick={() => (window.location.href = "/components")}
+              onClick={() => (window.location.href = "#two")}
             >
-              Explore Components
+              {"more..."}
             </GlassButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -125,19 +135,14 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 1: Video Hero — Glass refraction over looping video
           ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        {/* Fixed video background */}
-        <div className="fixed inset-0 -z-20">
-          <video
-            className="h-full w-full object-cover"
-            autoPlay
-            muted
-            playsInline
-            loop
-            poster="/bg/video-production.png"
-          >
-            <source src="/bg/hero-video.webm" type="video/webm" />
-          </video>
+      <section
+        className="relative flex min-h-screen items-center justify-center overflow-hidden"
+        id="two"
+      >
+        <div
+          className="absolute inset-0 -z-10 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/bg/video-production.png')" }}
+        >
           <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
         </div>
 
@@ -295,8 +300,8 @@ export default function HomePage() {
                     Chromatic Aberration
                   </h3>
                   <p className="mt-1 text-sm text-white/70">
-                    RGB channels displaced separately for that rainbow fringe
-                    at the edges.
+                    RGB channels displaced separately for that rainbow fringe at
+                    the edges.
                   </p>
                 </GlassPanel>
               </AnimatedBorder>
@@ -512,7 +517,26 @@ export default function HomePage() {
             <GlassCard featured>
               <div className="flex flex-col gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ctp-blue/15 text-ctp-blue">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72" /><path d="m14 7 3 3" /><path d="M5 6v4" /><path d="M19 14v4" /><path d="M10 2v2" /><path d="M7 8H3" /><path d="M21 16h-4" /><path d="M11 3H9" /></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72" />
+                    <path d="m14 7 3 3" />
+                    <path d="M5 6v4" />
+                    <path d="M19 14v4" />
+                    <path d="M10 2v2" />
+                    <path d="M7 8H3" />
+                    <path d="M21 16h-4" />
+                    <path d="M11 3H9" />
+                  </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white">Liquid Glass</h3>
                 <p className="text-sm text-white/70">
@@ -525,7 +549,21 @@ export default function HomePage() {
             <GlassCard hoverBorder>
               <div className="flex flex-col gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ctp-pink/15 text-ctp-pink">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="M3 9h18" />
+                    <path d="M9 21V9" />
+                  </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white">
                   Animated Borders
@@ -540,7 +578,19 @@ export default function HomePage() {
             <GlassCard hoverBorder>
               <div className="flex flex-col gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ctp-mauve/15 text-ctp-mauve">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                  </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white">
                   Catppuccin Colors
@@ -590,9 +640,7 @@ export default function HomePage() {
                 { name: "Lavender", cls: "bg-ctp-lavender" },
               ].map((c) => (
                 <div key={c.name} className="flex flex-col items-center gap-1">
-                  <div
-                    className={`h-10 w-10 rounded-lg ${c.cls} shadow-md`}
-                  />
+                  <div className={`h-10 w-10 rounded-lg ${c.cls} shadow-md`} />
                   <span className="text-[10px] text-muted-foreground">
                     {c.name}
                   </span>
@@ -602,11 +650,13 @@ export default function HomePage() {
           </GlassCard>
 
           {/* User behavior section */}
-          <div className="relative mt-12 overflow-hidden rounded-2xl">
-            <img
+          <div className="relative mt-12 h-64 overflow-hidden rounded-2xl">
+            <Image
               src="/bg/user-behavior.webp"
               alt="Data visualization"
-              className="h-64 w-full object-cover"
+              fill
+              sizes="(min-width: 768px) 100vw, 100vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute inset-0 flex items-center justify-center">
@@ -619,9 +669,7 @@ export default function HomePage() {
                 chromaticAberration={6}
                 className="flex flex-col items-center justify-center gap-2 p-6"
               >
-                <p className="text-lg font-bold text-white">
-                  Works Everywhere
-                </p>
+                <p className="text-lg font-bold text-white">Works Everywhere</p>
                 <p className="text-center text-sm text-white/70">
                   Inline glass panels over any image — cards, heroes, banners
                 </p>
