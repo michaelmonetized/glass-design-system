@@ -16,6 +16,25 @@
   to { --conic-angle: 360deg; }
 }
 
+/* ─── Gradient shift animations for section backgrounds ─── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes gradient-shift-slow {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-gradient-shift-slow {
+  animation: gradient-shift-slow 15s ease infinite;
+}
+
 /* ─── Catppuccin + shadcn theme mapping ─── */
 @theme inline {
   --color-background: var(--background);
