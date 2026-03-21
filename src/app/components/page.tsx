@@ -345,9 +345,9 @@ export default function ComponentsPage() {
 
   return (
     <TooltipProvider>
-      <main className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-12 md:px-6">
+      <main className="relative">
         {/* ─── Header ─── */}
-        <div className="space-y-8">
+        <div className="mx-auto max-w-7xl space-y-8 px-3 py-8 sm:px-4 sm:py-12 md:px-6">
           <SectionHeader
             eyebrow="Library"
             title="Component Gallery"
@@ -372,23 +372,23 @@ export default function ComponentsPage() {
           </StatsGrid>
         </div>
 
-        <div className="mt-10 space-y-12 sm:mt-16 sm:space-y-20">
-          {/* ─── Glass Playground ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="glass-playground">
-            {/* Video background */}
-            <div className="absolute inset-0 -z-10">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 size-full object-cover"
-              >
-                <source src="/bg/hero-video.webm" type="video/webm" />
-              </video>
-              <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
-            </div>
+        {/* ─── Glass Playground ─── */}
+        <section className="relative overflow-hidden" id="glass-playground">
+          {/* Video background */}
+          <div className="absolute inset-0 -z-10">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover"
+            >
+              <source src="/bg/hero-video.webm" type="video/webm" />
+            </video>
+            <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Glass"
               title="Liquid Glass Playground"
@@ -466,9 +466,11 @@ export default function ComponentsPage() {
                 </div>
               </GlassCard>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Core Primitives ─── */}
+        {/* ─── Core Primitives ─── */}
+        <div className="mx-auto mt-10 max-w-7xl space-y-12 px-3 sm:mt-16 sm:space-y-20 sm:px-4 md:px-6">
           <section className="space-y-8" id="primitives">
             <SectionHeader
               eyebrow="Foundations"
@@ -1062,19 +1064,22 @@ export default function ComponentsPage() {
               NEW SECTIONS: Payment, Products, Auth, Charts, Tasks, Users, etc.
           ═══════════════════════════════════════════════════════════════════════ */}
 
-          {/* ─── Payment Methods & Checkout ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="payment">
-            {/* Video production background for commerce/marketing */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/video-production.png"
-                alt=""
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
-            </div>
+        </div>
 
+        {/* ─── Payment Methods & Checkout ─── */}
+        <section className="relative overflow-hidden" id="payment">
+          {/* Video production background for commerce/marketing */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/video-production.png"
+              alt=""
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Commerce"
               title="Payment Methods & Checkout"
@@ -1218,17 +1223,19 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Product Cards ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="products">
-            {/* Subtle product photography-inspired gradient */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-tr from-ctp-surface0/50 via-ctp-base/40 to-ctp-surface1/40" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,224,220,0.1),transparent_60%)]" />
-              <div className="absolute bottom-0 h-1/2 bg-gradient-to-t from-background/30 to-transparent" />
-            </div>
+        {/* ─── Product Cards ─── */}
+        <section className="relative overflow-hidden" id="products">
+          {/* Subtle product photography-inspired gradient */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-tr from-ctp-surface0/50 via-ctp-base/40 to-ctp-surface1/40" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,224,220,0.1),transparent_60%)]" />
+            <div className="absolute bottom-0 h-1/2 bg-gradient-to-t from-background/30 to-transparent" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Commerce"
               title="Product Cards"
@@ -1409,22 +1416,24 @@ export default function ComponentsPage() {
                 </div>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Authentication Forms ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="auth">
-            {/* Photo background for auth context */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/hero-michael.jpg"
-                alt=""
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
-            </div>
+        {/* ─── Authentication Forms ─── */}
+        <section className="relative overflow-hidden" id="auth">
+          {/* Photo background for auth context */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/hero-michael.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Auth"
               title="Authentication Forms"
@@ -1619,21 +1628,23 @@ export default function ComponentsPage() {
                 </CardFooter>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Charts & Analytics ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="charts">
-            {/* Direct approach background for analytics/business */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/direct-approach.png"
-                alt=""
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
-            </div>
+        {/* ─── Charts & Analytics ─── */}
+        <section className="relative overflow-hidden" id="charts">
+          {/* Direct approach background for analytics/business */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/direct-approach.png"
+              alt=""
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Analytics"
               title="Charts & Analytics"
@@ -1790,21 +1801,23 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Task/Card Management ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="tasks">
-            {/* Direct approach background for productivity/work */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/direct-approach.png"
-                alt=""
-                fill
-                className="object-cover object-bottom"
-              />
-              <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px]" />
-            </div>
+        {/* ─── Task/Card Management ─── */}
+        <section className="relative overflow-hidden" id="tasks">
+          {/* Direct approach background for productivity/work */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/direct-approach.png"
+              alt=""
+              fill
+              className="object-cover object-bottom"
+            />
+            <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px]" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Productivity"
               title="Task & Card Management"
@@ -1999,21 +2012,23 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── User Menus & Profiles ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="profiles">
-            {/* Web designer background for profiles/users */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/web-designer.png"
-                alt=""
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
-            </div>
+        {/* ─── User Menus & Profiles ─── */}
+        <section className="relative overflow-hidden" id="profiles">
+          {/* Web designer background for profiles/users */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/web-designer.png"
+              alt=""
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Users"
               title="User Menus & Profiles"
@@ -2286,21 +2301,23 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Welcome/Onboarding ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="welcome">
-            {/* Video production background for onboarding/marketing */}
-            <div className="absolute inset-0 -z-10">
-              <Image
-                src="/bg/video-production.png"
-                alt=""
-                fill
-                className="object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-background/65 backdrop-blur-[1px]" />
-            </div>
+        {/* ─── Welcome/Onboarding ─── */}
+        <section className="relative overflow-hidden" id="welcome">
+          {/* Video production background for onboarding/marketing */}
+          <div className="absolute inset-0 -z-10">
+            <Image
+              src="/bg/video-production.png"
+              alt=""
+              fill
+              className="object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-background/65 backdrop-blur-[1px]" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Onboarding"
               title="Welcome & Onboarding"
@@ -2423,17 +2440,19 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Commerce Flows ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="commerce">
-            {/* Commerce gradient with subtle depth */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-tr from-ctp-blue/10 via-transparent to-ctp-mauve/10 dark:from-ctp-blue/8 dark:to-ctp-mauve/8" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(137,180,250,0.08),transparent_60%)]" />
-              <div className="absolute inset-0 bg-background/30" />
-            </div>
+        {/* ─── Commerce Flows ─── */}
+        <section className="relative overflow-hidden" id="commerce">
+          {/* Commerce gradient with subtle depth */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-tr from-ctp-blue/10 via-transparent to-ctp-mauve/10 dark:from-ctp-blue/8 dark:to-ctp-mauve/8" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(137,180,250,0.08),transparent_60%)]" />
+            <div className="absolute inset-0 bg-background/30" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Commerce"
               title="Commerce Flows"
@@ -2649,24 +2668,26 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Chat/Messaging ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="chat">
-            {/* Chat-inspired background with subtle bubbles pattern */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-ctp-sapphire/10 via-ctp-sky/5 to-ctp-teal/10 dark:from-ctp-sapphire/8 dark:via-ctp-sky/5 dark:to-ctp-teal/8" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(116,199,236,0.1),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(148,226,213,0.1),transparent_40%)]" />
-              <div 
-                className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='20' fill='%2389b4fa' fill-opacity='0.3'/%3E%3Ccircle cx='75' cy='75' r='15' fill='%2394e2d5' fill-opacity='0.3'/%3E%3C/svg%3E")`,
-                  backgroundSize: '200px 200px',
-                }}
-              />
-              <div className="absolute inset-0 bg-background/30" />
-            </div>
+        {/* ─── Chat/Messaging ─── */}
+        <section className="relative overflow-hidden" id="chat">
+          {/* Chat-inspired background with subtle bubbles pattern */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-ctp-sapphire/10 via-ctp-sky/5 to-ctp-teal/10 dark:from-ctp-sapphire/8 dark:via-ctp-sky/5 dark:to-ctp-teal/8" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(116,199,236,0.1),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(148,226,213,0.1),transparent_40%)]" />
+            <div 
+              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='25' cy='25' r='20' fill='%2389b4fa' fill-opacity='0.3'/%3E%3Ccircle cx='75' cy='75' r='15' fill='%2394e2d5' fill-opacity='0.3'/%3E%3C/svg%3E")`,
+                backgroundSize: '200px 200px',
+              }}
+            />
+            <div className="absolute inset-0 bg-background/30" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="Communication"
               title="Chat & Messaging"
@@ -2868,17 +2889,19 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Empty States & Errors ─── */}
-          <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="empty-states">
-            {/* Subtle muted gradient for error/empty states */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-b from-ctp-overlay0/10 via-ctp-surface0/20 to-ctp-base" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(108,112,134,0.05),transparent_70%)]" />
-              <div className="absolute inset-0 bg-background/35" />
-            </div>
+        {/* ─── Empty States & Errors ─── */}
+        <section className="relative overflow-hidden" id="empty-states">
+          {/* Subtle muted gradient for error/empty states */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-b from-ctp-overlay0/10 via-ctp-surface0/20 to-ctp-base" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(108,112,134,0.05),transparent_70%)]" />
+            <div className="absolute inset-0 bg-background/35" />
+          </div>
 
+          <div className="relative z-10 mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6">
             <SectionHeader
               eyebrow="States"
               title="Empty States & Errors"
@@ -2984,15 +3007,16 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* ─── Element Coverage Summary ─── */}
-          <section className="space-y-8" id="patterns">
-            <SectionHeader
-              eyebrow="Patterns"
-              title="Element Coverage"
-              description="A practical mapping of common public categories from shadcn, shadcn UI Kit, and Elementor-style ecosystems into reusable JSX."
-            />
+        {/* ─── Element Coverage Summary ─── */}
+        <section className="mx-auto max-w-7xl space-y-8 px-3 py-12 sm:px-4 md:px-6" id="patterns">
+          <SectionHeader
+            eyebrow="Patterns"
+            title="Element Coverage"
+            description="A practical mapping of common public categories from shadcn, shadcn UI Kit, and Elementor-style ecosystems into reusable JSX."
+          />
 
             <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 xl:grid-cols-[0.95fr_1.05fr]">
               <Card className="border-border/60 bg-card/90">
@@ -3068,9 +3092,8 @@ export default function ComponentsPage() {
                   />
                 </CardContent>
               </Card>
-            </div>
-          </section>
-        </div>
+          </div>
+        </section>
 
         {/* ─── Dialogs ─── */}
         <GlassDialog
