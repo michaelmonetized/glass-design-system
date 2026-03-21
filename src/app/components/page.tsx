@@ -344,7 +344,7 @@ export default function ComponentsPage() {
 
   return (
     <TooltipProvider>
-      <main className="mx-auto max-w-7xl px-4 py-12 md:px-6">
+      <main className="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-12 md:px-6">
         {/* ─── Header ─── */}
         <div className="space-y-8">
           <SectionHeader
@@ -371,7 +371,7 @@ export default function ComponentsPage() {
           </StatsGrid>
         </div>
 
-        <div className="mt-16 space-y-20">
+        <div className="mt-10 space-y-12 sm:mt-16 sm:space-y-20">
           {/* ─── Glass Playground ─── */}
           <section className="space-y-8" id="glass-playground">
             <SectionHeader
@@ -380,9 +380,9 @@ export default function ComponentsPage() {
               description="The same refraction system now drives panels, cards, and buttons. Use the official slider primitive to tune the glass surface live."
             />
 
-            <div className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
-              <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-ctp-blue/20 via-ctp-mauve/10 to-ctp-pink/20 p-6">
-                <div className="flex min-h-[26rem] items-center justify-center rounded-[1.5rem] border border-white/10 bg-black/10 p-6">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 xl:grid-cols-[1.1fr_0.9fr]">
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-ctp-blue/20 via-ctp-mauve/10 to-ctp-pink/20 p-4 sm:rounded-[2rem] sm:p-6">
+                <div className="flex min-h-[18rem] items-center justify-center rounded-xl border border-white/10 bg-black/10 p-4 sm:min-h-[26rem] sm:rounded-[1.5rem] sm:p-6">
                   <AnimatedBorder borderRadius="1.75rem" showGlow animate>
                     <GlassPanel
                       width={panelSettings.width}
@@ -461,7 +461,7 @@ export default function ComponentsPage() {
               description="Alerts, badges, breadcrumbs, cards, avatars, tabs, and content structure pulled in as real reusable primitives rather than ad hoc page code."
             />
 
-            <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 xl:grid-cols-[1.1fr_0.9fr]">
               <Card className="border-border/60 bg-card/90">
                 <CardHeader className="space-y-4">
                   <Breadcrumb>
@@ -570,7 +570,7 @@ export default function ComponentsPage() {
               description="Covers the common page-builder and app form controls: input, textarea, select, checkbox, radio group, switch, slider, and segmented toggle groups."
             />
 
-            <div className="grid gap-6 xl:grid-cols-[1fr_1fr]">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
                   <CardTitle>Form Controls</CardTitle>
@@ -697,7 +697,7 @@ export default function ComponentsPage() {
               description="Menubars, navigation menus, hover cards, popovers, tooltips, command palettes, and pagination give the system the app-shell pieces it was missing."
             />
 
-            <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 xl:grid-cols-[1.05fr_0.95fr]">
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
                   <CardTitle>Navigation Primitives</CardTitle>
@@ -867,7 +867,7 @@ export default function ComponentsPage() {
               description="The structural side of the system: long-form content, analytics views, FAQ toggles, progress bars, and content placeholders."
             />
 
-            <div className="grid gap-6 xl:grid-cols-[1fr_1fr]">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
                   <CardTitle>Data Views</CardTitle>
@@ -876,14 +876,15 @@ export default function ComponentsPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-5">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Component</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Status</TableHead>
-                      </TableRow>
-                    </TableHeader>
+                  <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Component</TableHead>
+                          <TableHead>Type</TableHead>
+                          <TableHead>Status</TableHead>
+                        </TableRow>
+                      </TableHeader>
                     <TableBody>
                       <TableRow>
                         <TableCell>Pricing Card</TableCell>
@@ -900,8 +901,9 @@ export default function ComponentsPage() {
                         <TableCell>Effect</TableCell>
                         <TableCell>Ready</TableCell>
                       </TableRow>
-                    </TableBody>
-                  </Table>
+                      </TableBody>
+                    </Table>
+                  </div>
 
                   <ScrollArea className="h-44 rounded-2xl border border-border/60 bg-background/60 p-4">
                     <div className="space-y-4 text-sm text-muted-foreground">
@@ -1053,7 +1055,7 @@ export default function ComponentsPage() {
               description="Payment cards, checkout flows, and transaction confirmations. All variations use glass accents for premium surfaces."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Payment Card 1: Basic Card Display */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
@@ -1200,7 +1202,7 @@ export default function ComponentsPage() {
               description="Multiple product card variations for e-commerce: basic, featured, with discounts, ratings, countdown timers, and quick actions."
             />
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
               {/* Product 1: Basic */}
               <Card className="group overflow-hidden border-border/60 bg-card/90">
                 <div className="relative h-48 bg-gradient-to-br from-ctp-surface0 to-ctp-surface1">
@@ -1358,15 +1360,15 @@ export default function ComponentsPage() {
               </Card>
 
               {/* Product 8: Compact Variant */}
-              <Card className="flex flex-row items-center gap-4 border-border/60 bg-card/90 p-4">
-                <div className="flex size-20 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-ctp-surface0 to-ctp-surface1">
-                  <PackageIcon className="size-8 text-muted-foreground/30" />
+              <Card className="flex flex-row items-center gap-3 border-border/60 bg-card/90 p-3 sm:gap-4 sm:p-4">
+                <div className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-ctp-surface0 to-ctp-surface1 sm:size-20 sm:rounded-xl">
+                  <PackageIcon className="size-6 text-muted-foreground/30 sm:size-8" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h4 className="truncate font-semibold">USB-C Hub</h4>
-                  <p className="text-sm text-muted-foreground">7-in-1 adapter</p>
+                  <h4 className="truncate text-sm font-semibold sm:text-base">USB-C Hub</h4>
+                  <p className="text-xs text-muted-foreground sm:text-sm">7-in-1 adapter</p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold">$59.99</span>
+                    <span className="text-sm font-bold sm:text-base">$59.99</span>
                     <Button size="sm" variant="ghost">
                       <PlusIcon className="size-4" />
                     </Button>
@@ -1384,7 +1386,7 @@ export default function ComponentsPage() {
               description="Login, signup, password reset, 2FA, social login, and magic link flows. Clean form patterns for onboarding and security."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Auth 1: Login */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader className="text-center">
@@ -1490,11 +1492,11 @@ export default function ComponentsPage() {
                   <CardDescription>Enter the 6-digit code from your app</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex justify-center gap-2">
+                  <div className="flex justify-center gap-1.5 sm:gap-2">
                     {[...Array(6)].map((_, i) => (
                       <Input
                         key={i}
-                        className="size-12 text-center text-lg font-bold"
+                        className="size-10 text-center text-base font-bold sm:size-12 sm:text-lg"
                         maxLength={1}
                       />
                     ))}
@@ -1582,7 +1584,7 @@ export default function ComponentsPage() {
               description="Dashboard metrics, KPI cards, and chart placeholders for analytics interfaces. Uses Catppuccin chart colors."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
               {/* Metric Cards */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -1629,7 +1631,7 @@ export default function ComponentsPage() {
               </Card>
             </div>
 
-            <div className="grid gap-6 xl:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
               {/* Line Chart Placeholder */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
@@ -1637,7 +1639,7 @@ export default function ComponentsPage() {
                   <CardDescription>Monthly revenue for the past year</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex h-64 items-end gap-2">
+                  <div className="flex h-48 items-end gap-1 sm:h-64 sm:gap-2">
                     {[40, 55, 45, 70, 65, 80, 75, 90, 85, 95, 88, 100].map((height, i) => (
                       <div
                         key={i}
@@ -1742,7 +1744,7 @@ export default function ComponentsPage() {
               description="Kanban cards, task items, priority indicators, status badges, and drag handles for project management interfaces."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Task List */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
@@ -1940,7 +1942,7 @@ export default function ComponentsPage() {
               description="Profile dropdowns, settings menus, user cards, and avatars with status indicators for account-related interfaces."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Profile Card */}
               <Card className="border-border/60 bg-card/90">
                 <CardContent className="pt-6">
@@ -2117,15 +2119,16 @@ export default function ComponentsPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Member</TableHead>
-                        <TableHead>Role</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
+                  <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Member</TableHead>
+                          <TableHead>Role</TableHead>
+                          <TableHead>Status</TableHead>
+                          <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
                     <TableBody>
                       <TableRow>
                         <TableCell>
@@ -2199,8 +2202,9 @@ export default function ComponentsPage() {
                           </Button>
                         </TableCell>
                       </TableRow>
-                    </TableBody>
-                  </Table>
+                      </TableBody>
+                    </Table>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -2214,19 +2218,19 @@ export default function ComponentsPage() {
               description="Welcome cards, hero banners, feature announcements, and empty states for first-run experiences."
             />
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
               {/* Welcome Hero */}
               <GlassCard className="md:col-span-2">
-                <div className="flex flex-col items-center py-8 text-center md:py-12">
-                  <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-gradient-to-br from-ctp-blue to-ctp-mauve">
-                    <SparklesIcon className="size-10 text-white" />
+                <div className="flex flex-col items-center py-6 text-center sm:py-8 md:py-12">
+                  <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-ctp-blue to-ctp-mauve sm:size-20">
+                    <SparklesIcon className="size-8 text-white sm:size-10" />
                   </div>
-                  <h2 className="text-3xl font-black text-foreground">Welcome to Glass UI</h2>
-                  <p className="mt-3 max-w-xl text-muted-foreground">
+                  <h2 className="text-2xl font-black text-foreground sm:text-3xl">Welcome to Glass UI</h2>
+                  <p className="mt-3 max-w-xl px-2 text-sm text-muted-foreground sm:px-0 sm:text-base">
                     You&apos;re all set up and ready to start building beautiful interfaces.
                     Let&apos;s explore what you can create.
                   </p>
-                  <div className="mt-6 flex gap-3">
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <GlassButton variant="cta">Get Started</GlassButton>
                     <GlassButton variant="default">Watch Tutorial</GlassButton>
                   </div>
@@ -2340,7 +2344,7 @@ export default function ComponentsPage() {
               description="Product pages, shipping options, refund flows, and order tracking for e-commerce experiences."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Shipping Options */}
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
@@ -2559,7 +2563,7 @@ export default function ComponentsPage() {
               description="Message bubbles, chat threads, notification cards, and conversation interfaces."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* Chat Thread */}
               <Card className="border-border/60 bg-card/90 md:col-span-2 xl:col-span-2">
                 <CardHeader className="flex-row items-center gap-3 space-y-0">
@@ -2709,7 +2713,7 @@ export default function ComponentsPage() {
                   <CardTitle className="text-base">Recent Conversations</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
                     <div className="flex cursor-pointer items-center gap-3 rounded-xl border border-primary/30 bg-primary/5 p-3">
                       <Avatar>
                         <AvatarFallback>JD</AvatarFallback>
@@ -2764,11 +2768,11 @@ export default function ComponentsPage() {
               description="404 pages, error states, empty list states, and loading patterns for graceful failure and empty data handling."
             />
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {/* 404 State */}
               <Card className="border-border/60 bg-card/90 md:col-span-2 xl:col-span-1">
                 <CardContent className="flex flex-col items-center py-12 text-center">
-                  <div className="mb-4 text-8xl font-black text-muted-foreground/20">404</div>
+                  <div className="mb-4 text-6xl font-black text-muted-foreground/20 sm:text-8xl">404</div>
                   <h3 className="text-xl font-bold">Page Not Found</h3>
                   <p className="mt-2 max-w-sm text-sm text-muted-foreground">
                     The page you&apos;re looking for doesn&apos;t exist or has been moved.
@@ -2873,7 +2877,7 @@ export default function ComponentsPage() {
               description="A practical mapping of common public categories from shadcn, shadcn UI Kit, and Elementor-style ecosystems into reusable JSX."
             />
 
-            <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2 xl:grid-cols-[0.95fr_1.05fr]">
               <Card className="border-border/60 bg-card/90">
                 <CardHeader>
                   <CardTitle>Mapped Families</CardTitle>
