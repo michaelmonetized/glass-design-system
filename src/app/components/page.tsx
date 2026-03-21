@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   AlertCircleIcon,
   ArrowRightIcon,
@@ -374,11 +375,18 @@ export default function ComponentsPage() {
         <div className="mt-10 space-y-12 sm:mt-16 sm:space-y-20">
           {/* ─── Glass Playground ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="glass-playground">
-            {/* Animated gradient background */}
+            {/* Video background */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 animate-gradient-shift bg-[length:200%_200%] bg-gradient-to-br from-ctp-blue/30 via-ctp-mauve/20 to-ctp-pink/30 dark:from-ctp-blue/20 dark:via-ctp-mauve/15 dark:to-ctp-pink/20" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(137,180,250,0.15),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(203,166,247,0.15),transparent_50%)]" />
-              <div className="absolute inset-0 bg-background/60 backdrop-blur-[1px]" />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 size-full object-cover"
+              >
+                <source src="/bg/hero-video.webm" type="video/webm" />
+              </video>
+              <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
             </div>
 
             <SectionHeader
@@ -1056,11 +1064,15 @@ export default function ComponentsPage() {
 
           {/* ─── Payment Methods & Checkout ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="payment">
-            {/* Gradient background for commerce */}
+            {/* Video production background for commerce/marketing */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-ctp-green/10 via-ctp-teal/5 to-ctp-sapphire/10 dark:from-ctp-green/8 dark:via-ctp-teal/5 dark:to-ctp-sapphire/8" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(166,227,161,0.08),transparent_70%)]" />
-              <div className="absolute inset-0 bg-background/70" />
+              <Image
+                src="/bg/video-production.png"
+                alt=""
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
             </div>
 
             <SectionHeader
@@ -1212,9 +1224,9 @@ export default function ComponentsPage() {
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="products">
             {/* Subtle product photography-inspired gradient */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-tr from-ctp-surface0/80 via-ctp-base to-ctp-surface1/60" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-ctp-surface0/50 via-ctp-base/40 to-ctp-surface1/40" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,224,220,0.1),transparent_60%)]" />
-              <div className="absolute bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
+              <div className="absolute bottom-0 h-1/2 bg-gradient-to-t from-background/30 to-transparent" />
             </div>
 
             <SectionHeader
@@ -1401,16 +1413,16 @@ export default function ComponentsPage() {
 
           {/* ─── Authentication Forms ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="auth">
-            {/* Login-inspired background with gradient + subtle grid pattern */}
+            {/* Photo background for auth context */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-ctp-mauve/15 via-ctp-lavender/10 to-ctp-blue/15 dark:from-ctp-mauve/10 dark:via-ctp-lavender/8 dark:to-ctp-blue/10" />
-              <div 
-                className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23cba6f7' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                }}
+              <Image
+                src="/bg/hero-michael.jpg"
+                alt=""
+                fill
+                className="object-cover"
+                priority
               />
-              <div className="absolute inset-0 bg-background/75 backdrop-blur-[0.5px]" />
+              <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
             </div>
 
             <SectionHeader
@@ -1611,18 +1623,15 @@ export default function ComponentsPage() {
 
           {/* ─── Charts & Analytics ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="charts">
-            {/* Data visualization grid background */}
+            {/* Direct approach background for analytics/business */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-b from-ctp-surface0/50 via-ctp-base to-ctp-mantle/30" />
-              <div 
-                className="absolute inset-0 opacity-[0.04] dark:opacity-[0.08]"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(137,180,250,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(137,180,250,0.5) 1px, transparent 1px)`,
-                  backgroundSize: '40px 40px',
-                }}
+              <Image
+                src="/bg/direct-approach.png"
+                alt=""
+                fill
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(137,180,250,0.08),transparent_60%),radial-gradient(ellipse_at_top_left,rgba(166,227,161,0.08),transparent_60%)]" />
-              <div className="absolute inset-0 bg-background/60" />
+              <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
             </div>
 
             <SectionHeader
@@ -1785,17 +1794,15 @@ export default function ComponentsPage() {
 
           {/* ─── Task/Card Management ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="tasks">
-            {/* Productivity-focused clean gradient */}
+            {/* Direct approach background for productivity/work */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-b from-ctp-lavender/8 via-ctp-surface0/40 to-ctp-base" />
-              <div 
-                className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
-                style={{
-                  backgroundImage: `linear-gradient(rgba(180,190,254,0.4) 1px, transparent 1px)`,
-                  backgroundSize: '100% 60px',
-                }}
+              <Image
+                src="/bg/direct-approach.png"
+                alt=""
+                fill
+                className="object-cover object-bottom"
               />
-              <div className="absolute inset-0 bg-background/60" />
+              <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px]" />
             </div>
 
             <SectionHeader
@@ -1996,11 +2003,15 @@ export default function ComponentsPage() {
 
           {/* ─── User Menus & Profiles ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="profiles">
-            {/* User/profile soft gradient */}
+            {/* Web designer background for profiles/users */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-ctp-pink/8 via-ctp-flamingo/5 to-ctp-rosewater/8 dark:from-ctp-pink/6 dark:via-ctp-flamingo/4 dark:to-ctp-rosewater/6" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(245,194,231,0.1),transparent_50%)]" />
-              <div className="absolute inset-0 bg-background/70" />
+              <Image
+                src="/bg/web-designer.png"
+                alt=""
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-background/75 backdrop-blur-[2px]" />
             </div>
 
             <SectionHeader
@@ -2279,11 +2290,15 @@ export default function ComponentsPage() {
 
           {/* ─── Welcome/Onboarding ─── */}
           <section className="relative -mx-3 space-y-8 overflow-hidden rounded-3xl px-3 py-12 sm:-mx-4 sm:px-4 md:-mx-6 md:px-6" id="welcome">
-            {/* Celebratory gradient for onboarding */}
+            {/* Video production background for onboarding/marketing */}
             <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 animate-gradient-shift-slow bg-[length:300%_300%] bg-gradient-to-br from-ctp-peach/15 via-ctp-yellow/10 to-ctp-green/15 dark:from-ctp-peach/10 dark:via-ctp-yellow/8 dark:to-ctp-green/10" />
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(250,179,135,0.12),transparent_60%)]" />
-              <div className="absolute inset-0 bg-background/65" />
+              <Image
+                src="/bg/video-production.png"
+                alt=""
+                fill
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-background/65 backdrop-blur-[1px]" />
             </div>
 
             <SectionHeader
@@ -2416,7 +2431,7 @@ export default function ComponentsPage() {
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-ctp-blue/10 via-transparent to-ctp-mauve/10 dark:from-ctp-blue/8 dark:to-ctp-mauve/8" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(137,180,250,0.08),transparent_60%)]" />
-              <div className="absolute inset-0 bg-background/70" />
+              <div className="absolute inset-0 bg-background/30" />
             </div>
 
             <SectionHeader
@@ -2649,7 +2664,7 @@ export default function ComponentsPage() {
                   backgroundSize: '200px 200px',
                 }}
               />
-              <div className="absolute inset-0 bg-background/70" />
+              <div className="absolute inset-0 bg-background/30" />
             </div>
 
             <SectionHeader
@@ -2861,7 +2876,7 @@ export default function ComponentsPage() {
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-b from-ctp-overlay0/10 via-ctp-surface0/20 to-ctp-base" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(108,112,134,0.05),transparent_70%)]" />
-              <div className="absolute inset-0 bg-background/75" />
+              <div className="absolute inset-0 bg-background/35" />
             </div>
 
             <SectionHeader
