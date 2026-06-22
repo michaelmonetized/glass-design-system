@@ -1,0 +1,19 @@
+{
+  "repoId": "r1732r8k1bwntze9ft4mbwk0y187nc88",
+  "owner": "uncap_user",
+  "name": "glass-design-system",
+  "originType": "native",
+  "legacy": {
+    "hasGitHub": false,
+    "hasGit": true
+  },
+  "defaults": {
+    "file": "public",
+    "fragment": "public",
+    "issue": "public",
+    "pullRequest": "public",
+    "branch": "public",
+    "comment": "public"
+  },
+  "headSha": ""
+}
